@@ -95,7 +95,8 @@
       </div>
     </div>
   </div>
-  
+
+  <?php include "./add_contact.php"; ?>
 
 
     <script src="js/vendor/jquery.js"></script>
