@@ -19,12 +19,13 @@ $contacts = $db->resultset();
             <th width="250">Address</th>
             <th width="100">Group</th>
             <th width="150">Actions</th>
+
           </tr>
         </thead>
         <tbody>
 
         <?php foreach($contacts as $contact) : ?>
-        
+
           <tr>
             <td class="contact_id_<?php echo $contact->id;?>"><a href="contact.html"><?php echo $contact->first_name . ' ' . $contact->last_name; ?></a></td>
             <td><?php echo $contact->phone;?></td>
@@ -50,63 +51,68 @@ $contacts = $db->resultset();
                             </div>
                             <div class="large-6 columns">
                             <label>Last Name </label>
-                            <input name="last_name" type="text" placeholder="Enter Last Name" value="<?php echo $contact->first_name; ?>"/>
+                            <input name="last_name" type="text" placeholder="Enter Last Name" value="<?php echo $contact->last_name; ?>"/>
                             </div>
                         </div>
                         <div class="grid-x">
                             <div class="large-4 columns">
                             <label>Email </label>
-                            <input name="email" type="email" placeholder="Enter Email address" />
+                            <input name="email" type="email" placeholder="Enter Email address" value="<?php echo $contact->email; ?>"/>
                         </div>
                             <div class="large-4 columns">
                             <label>Phone Number</label>
-                                <input name="phone" type="tel" placeholder="315-550-8712"/>
+                                <input name="phone" type="tel" placeholder="315-550-8712" value="<?php echo $contact->phone; ?>"/>
                             </div>
                             <div class="large-4 columns">
                             <label>Contact Group</label> 
-                            <select name="contact_group"><option value="Family">Family</option>
-                                <option value="Friends">Friends</option>
-                                <option value="Business">Business</option>
+                            <select name="contact_group">
+                                <option value="family" <?php if($contact->contact_group == 'family') echo 'selected'; ?>>Family</option>
+                                <option value="friends" <?php if($contact->contact_group == 'friends') echo 'selected'; ?>>Friends</option>
+                                <option value="business" <?php if($contact->contact_group == 'business') echo 'selected'; ?>>Business</option>
                             </select>
                         </div>
                         </div>
                         <div class="grid-x">
                             <div class="large-6 columns">
                             <label>Address1 </label>
-                            <input name="address1" type="text" placeholder="Enter Street, House Number, GPO" />
+                            <input name="address1" type="text" placeholder="Enter Street, House Number, GPO" value="<?php echo $contact->address1; ?>"/>
                             </div>
                             <div class="large-6 columns">
                             <label>Address2 </label>
-                            <input name="address2" type="text" placeholder="Enter Additional Address" />
+                            <input name="address2" type="text" placeholder="Enter Additional Address" value="<?php echo $contact->address2; ?>"/>
                             </div>
                         </div>
                         <div class="grid-x">
                             <div class="large-4 columns">
                             <label>City </label>
-                            <input name="city" type="text" placeholder="Enter Your City" />
+                            <input name="city" type="text" placeholder="Enter Your City" value="<?php echo $contact->city; ?>"/>
                         </div>
                             <div class="large-4 columns">
                             <label>State </label>
                             <select name="state">
-                                <option>Select State</option>
-                                <option value="AJK">AJK</option>
-                                <option value="Balochistan">Balochistan</option>
-                                <option value="Gilgit Baltistan">Gilgit Baltistan</option>
-                                <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
-                                <option value="Punjab">Punjab</option>
-                                <option value="Sindh">Sindh</option>
+                                <?php foreach($states as $key => $value): ?>
 
+                                    <?php 
+                                        if($key == $contact->state){
+                                            $selected = 'selected';
+                                        } else {
+                                            $selected = '';
+                                        }
+                                    ?>
+
+                                    <option value="<?php echo $key; ?>" <?php echo $selected; ?>><?php echo $value; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                             <div class="large-4 columns">
                             <label>Zipcode </label>
-                                <input name="zipcode" type="text" placeholder="Enter Zone or State" />
+                                <input name="zipcode" type="text" placeholder="Enter Zone or State" value="<?php echo $contact->zipcode; ?>"/>
                             </div>
                         </div>
                         <div class="grid-x">
                             <div class="large-12 columns">
                             <label>Notes</label>
-                                <textarea name="notes" placeholder="Enter Optional Notes"></textarea>
+                                <textarea name="notes" placeholder="Enter Optional Notes"><?php echo $contact->notes; ?></textarea>
                             </div>
                         </div>
                         <input name="submit" type="submit" data-close aria-label="Close modal" class="add-btn button right small" value="Add Contact" />

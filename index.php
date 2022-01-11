@@ -1,3 +1,4 @@
+<?php include "core/init.php"; ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
   <head>
@@ -68,13 +69,9 @@
               <label>State </label>
               <select name="state">
                 <option>Select State</option>
-                <option value="AJK">AJK</option>
-                <option value="Balochistan">Balochistan</option>
-                <option value="Gilgit Baltistan">Gilgit Baltistan</option>
-                <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
-                <option value="Punjab">Punjab</option>
-                <option value="Sindh">Sindh</option>
-
+                  <?php foreach($states as $key => $state): ?>
+                      <option value="<?php echo $key; ?>"><?php echo $state; ?></option>
+                  <?php endforeach; ?>
               </select>
           </div>
             <div class="large-4 columns">
