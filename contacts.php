@@ -1,8 +1,9 @@
-<?php include "core/init.php"; ?>
 <?php 
 
+include "core/init.php"; 
+
 $db = new Database;
-$query = $db->query("SELECT * FROM contacts ");
+$query = $db->query("SELECT * FROM contacts ORDER BY id DESC ");
 $contacts = $db->resultset();
 
 ?>
@@ -30,11 +31,11 @@ $contacts = $db->resultset();
             <td><?php echo $contact->email;?></td>
             <td>
               <ul style="list-style: none;">
-                <li><?php echo $contact->address1;?></li>
+                <li><?php echo $contact->address1; ?>, <?php echo $contact->city; ?>, <?php echo $contact->zipcode; ?></li>
                 <li><?php if($contact->address2) echo $contact->address2; ?></li>
               </ul>
             </td>
-            <td><?php echo $contact->contact_group;?></td>
+            <td class="contact_group"><p><?php echo $contact->contact_group;?></p></td>
             <td width="200">
               <ul class="button-group align-spaced" style="list-style: none;">
                 <li><a href="#" class="button" data-reveal-id="myModal">Edit</a></li>

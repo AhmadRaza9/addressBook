@@ -39,7 +39,7 @@
           </div>
             <div class="large-4 columns">
               <label>Phone Number</label>
-                <input name="phone" type="text" placeholder="Phone Number" />
+                <input name="phone" type="tel" placeholder="315-550-8712"/>
             </div>
             <div class="large-4 columns">
               <label>Contact Group</label> 
@@ -79,7 +79,7 @@
           </div>
             <div class="large-4 columns">
               <label>Zipcode </label>
-                <input name="state" type="text" placeholder="Enter Zone or State" />
+                <input name="zipcode" type="text" placeholder="Enter Zone or State" />
             </div>
           </div>
           <div class="grid-x">
