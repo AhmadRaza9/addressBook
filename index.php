@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/foundation.min.css">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="icon" href="img/logo.png">
   </head>
 <body>
 
@@ -96,8 +97,10 @@
     </div>
   </div>
 
-  <?php include "./add_contact.php"; ?>
-
+  <div id="loaderImage">
+    <img class="loader_img" src="img/loading-93.gif">
+  </div>
+  <div id="pageContent"></div>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>

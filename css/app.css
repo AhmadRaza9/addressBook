@@ -26,3 +26,16 @@ ul li {
 .button-group a {
     margin: auto;
 }
+
+#loaderImage {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top:0;
+    left: 0;
+}
+
+.loader_img{
+    width: 1368px;
+    height: 100vh;
+}
