@@ -8,6 +8,6 @@ $(document).ready(function(){
 function showContacts() {
     setTimeout(() => {
         $('#loaderImage').hide();
-        $('#pageContent').load('./add_contact.php');
+        $('#pageContent').load('./contacts.php');
     }, 2000);
 }
