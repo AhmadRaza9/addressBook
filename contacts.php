@@ -26,7 +26,7 @@ $contacts = $db->resultset();
         <?php foreach($contacts as $contact) : ?>
         
           <tr>
-            <td><a href="contact.html"><?php echo $contact->first_name . ' ' . $contact->last_name; ?></a></td>
+            <td class="contact_id_<?php echo $contact->id;?>"><a href="contact.html"><?php echo $contact->first_name . ' ' . $contact->last_name; ?></a></td>
             <td><?php echo $contact->phone;?></td>
             <td><?php echo $contact->email;?></td>
             <td>
@@ -38,7 +38,84 @@ $contacts = $db->resultset();
             <td class="contact_group"><p><?php echo $contact->contact_group;?></p></td>
             <td width="200">
               <ul class="button-group align-spaced" style="list-style: none;">
-                <li><a href="#" class="button" data-reveal-id="myModal">Edit</a></li>
+                <li>
+                <button class="button" data-open="editModal<?php echo $contact->id; ?>" data-reveal-id="editModal<?php echo $contact->id; ?>" data-contact-id="<?php echo $contact->id; ?>">Edit</button>
+                    <div class="reveal" id="editModal<?php echo $contact->id; ?>" data-cid="editModal<?php echo $contact->id; ?>" data-reveal>
+                        <h2>Add Contact</h2>
+                        <form id="addContact" action="#" method="post">
+                        <div class="grid-x">
+                            <div class="large-6 columns">
+                            <label>First Name </label>
+                            <input name="first_name" type="text" placeholder="Enter First Name" value="<?php echo $contact->first_name; ?>"/>
+                            </div>
+                            <div class="large-6 columns">
+                            <label>Last Name </label>
+                            <input name="last_name" type="text" placeholder="Enter Last Name" value="<?php echo $contact->first_name; ?>"/>
+                            </div>
+                        </div>
+                        <div class="grid-x">
+                            <div class="large-4 columns">
+                            <label>Email </label>
+                            <input name="email" type="email" placeholder="Enter Email address" />
+                        </div>
+                            <div class="large-4 columns">
+                            <label>Phone Number</label>
+                                <input name="phone" type="tel" placeholder="315-550-8712"/>
+                            </div>
+                            <div class="large-4 columns">
+                            <label>Contact Group</label> 
+                            <select name="contact_group"><option value="Family">Family</option>
+                                <option value="Friends">Friends</option>
+                                <option value="Business">Business</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="grid-x">
+                            <div class="large-6 columns">
+                            <label>Address1 </label>
+                            <input name="address1" type="text" placeholder="Enter Street, House Number, GPO" />
+                            </div>
+                            <div class="large-6 columns">
+                            <label>Address2 </label>
+                            <input name="address2" type="text" placeholder="Enter Additional Address" />
+                            </div>
+                        </div>
+                        <div class="grid-x">
+                            <div class="large-4 columns">
+                            <label>City </label>
+                            <input name="city" type="text" placeholder="Enter Your City" />
+                        </div>
+                            <div class="large-4 columns">
+                            <label>State </label>
+                            <select name="state">
+                                <option>Select State</option>
+                                <option value="AJK">AJK</option>
+                                <option value="Balochistan">Balochistan</option>
+                                <option value="Gilgit Baltistan">Gilgit Baltistan</option>
+                                <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Sindh">Sindh</option>
+
+                            </select>
+                        </div>
+                            <div class="large-4 columns">
+                            <label>Zipcode </label>
+                                <input name="zipcode" type="text" placeholder="Enter Zone or State" />
+                            </div>
+                        </div>
+                        <div class="grid-x">
+                            <div class="large-12 columns">
+                            <label>Notes</label>
+                                <textarea name="notes" placeholder="Enter Optional Notes"></textarea>
+                            </div>
+                        </div>
+                        <input name="submit" type="submit" data-close aria-label="Close modal" class="add-btn button right small" value="Add Contact" />
+                        </form>
+                        <button class="close-button" data-close aria-label="Close modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </li>
                 <li><a href="#" class="button [secondary alert success]">Delete</a></li>
               </ul>
             </td>
@@ -50,3 +127,5 @@ $contacts = $db->resultset();
       </table>
     </div>
   </div>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>

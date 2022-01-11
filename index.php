@@ -103,9 +103,6 @@
   <div id="pageContent"></div>
 
     <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
     <script src="js/script.js"></script>
 
   </body>
