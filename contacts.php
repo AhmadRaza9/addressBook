@@ -13,11 +13,12 @@ $contacts = $db->resultset();
       <table>
         <thead>
           <tr>
-            <th width="200">Name</th>
+            <th width="50">ID</th>
+            <th width="180">Name</th>
             <th width="130">Phone</th>
             <th width="200">Email</th>
             <th width="250">Address</th>
-            <th width="100">Group</th>
+            <th width="120">Group</th>
             <th width="150">Actions</th>
 
           </tr>
@@ -27,6 +28,7 @@ $contacts = $db->resultset();
         <?php foreach($contacts as $contact) : ?>
 
           <tr>
+            <td class=""><?php echo $contact->id;?></td>
             <td class="contact_id_<?php echo $contact->id;?>"><a href="contact.html"><?php echo $contact->first_name . ' ' . $contact->last_name; ?></a></td>
             <td><?php echo $contact->phone;?></td>
             <td><?php echo $contact->email;?></td>
@@ -40,8 +42,8 @@ $contacts = $db->resultset();
             <td width="200">
               <ul class="button-group align-spaced" style="list-style: none;">
                 <li>
-                <button class="button" data-open="editModal">Edit</button>
-                    <div class="reveal" id="editModal" data-reveal>
+                <button class="button" data-open="editModal<?php echo $contact->id;?>" >Edit</button>
+                    <div class="reveal" id="editModal<?php echo $contact->id;?>" data-reveal >
                         <h2>Edit Contact</h2>
                         <form id="editContact" action="#" method="post">
                         <div class="grid-x">
@@ -67,9 +69,9 @@ $contacts = $db->resultset();
                             <div class="large-4 columns">
                             <label>Contact Group</label> 
                             <select name="contact_group">
-                                <option value="family" <?php if($contact->contact_group == 'family') echo 'selected'; ?>>Family</option>
-                                <option value="friends" <?php if($contact->contact_group == 'friends') echo 'selected'; ?>>Friends</option>
-                                <option value="business" <?php if($contact->contact_group == 'business') echo 'selected'; ?>>Business</option>
+                                <option value="Family" <?php if($contact->contact_group == 'Family') echo 'selected'; ?>>Family</option>
+                                <option value="Friends" <?php if($contact->contact_group == 'Friends') echo 'selected'; ?>>Friends</option>
+                                <option value="Business" <?php if($contact->contact_group == 'Business') echo 'selected'; ?>>Business</option>
                             </select>
                         </div>
                         </div>
@@ -123,7 +125,12 @@ $contacts = $db->resultset();
                         </button>
                     </div>
                 </li>
-                <li><a href="#" class="button [secondary alert success]">Delete</a></li>
+                <li>
+                   <form id="deleteContact" action="#" method="POST">
+                      <input type="hidden" name="id" value="<?php echo $contact->id; ?>">
+                      <input type="submit" name="del_contact" value="Delete" class="button secondary alert">
+                   </form>
+                </li>
               </ul>
             </td>
           </tr>

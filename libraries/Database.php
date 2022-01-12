@@ -84,6 +84,9 @@ class Database{
         return $this->dbh->rollBack();
     }
     
+    public function redirect($location){
+        header("location: $location");
+    }
 
 }
 

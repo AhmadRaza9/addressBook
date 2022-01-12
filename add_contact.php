@@ -20,6 +20,8 @@ $db->bind(':zipcode', $_POST['zipcode']);
 $db->bind(':notes', $_POST['notes']);
 $db->bind(':contact_group', $_POST['contact_group']);
 
+// $db->redirect("/index.php");
+
 if($db->execute()){
     echo "Contact was added";
 } else {

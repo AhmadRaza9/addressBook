@@ -49,3 +49,7 @@ td.contact_group p {
     padding: 0;
     width: 80px;
 }
+
+ul{
+    margin-left: 0px !important;
+}
