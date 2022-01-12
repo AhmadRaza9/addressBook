@@ -40,13 +40,14 @@ $contacts = $db->resultset();
             <td width="200">
               <ul class="button-group align-spaced" style="list-style: none;">
                 <li>
-                <button class="button" data-open="editModal<?php echo $contact->id; ?>" data-reveal-id="editModal<?php echo $contact->id; ?>" data-contact-id="<?php echo $contact->id; ?>">Edit</button>
-                    <div class="reveal" id="editModal<?php echo $contact->id; ?>" data-cid="editModal<?php echo $contact->id; ?>" data-reveal>
-                        <h2>Add Contact</h2>
-                        <form id="addContact" action="#" method="post">
+                <button class="button" data-open="editModal">Edit</button>
+                    <div class="reveal" id="editModal" data-reveal>
+                        <h2>Edit Contact</h2>
+                        <form id="editContact" action="#" method="post">
                         <div class="grid-x">
                             <div class="large-6 columns">
                             <label>First Name </label>
+                            <input name="id" type="hidden" value="<?php echo $contact->id; ?>"/>
                             <input name="first_name" type="text" placeholder="Enter First Name" value="<?php echo $contact->first_name; ?>"/>
                             </div>
                             <div class="large-6 columns">
@@ -115,7 +116,7 @@ $contacts = $db->resultset();
                                 <textarea name="notes" placeholder="Enter Optional Notes"><?php echo $contact->notes; ?></textarea>
                             </div>
                         </div>
-                        <input name="submit" type="submit" data-close aria-label="Close modal" class="add-btn button right small" value="Add Contact" />
+                        <input name="submit" type="submit" data-close aria-label="Close modal" class="add-btn button right small" value="Update Contact" />
                         </form>
                         <button class="close-button" data-close aria-label="Close modal" type="button">
                             <span aria-hidden="true">&times;</span>
